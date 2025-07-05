@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>متجر الأكل الصحي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+   * {
+  box-sizing: border-box;
+  font-family: 'Cairo', sans-serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-size: 14px;
+  background: linear-gradient(to bottom, #f3fef5, #e0f2f1);
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #00695c, #2e7d32);
+  color: white;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, #d4fc79, #96e6a1, #43cea2, #185a9d);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #d4fc79, #96e6a1);
+  border-radius: 4px;
+}
+
+/* Nav */
+nav a {
+  color: #e8f5e9;
+  margin-left: 1rem;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #a5d6a7;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Decorative SVG wave */
+header::before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" fill="%23ffffff" xmlns="http://www.w3.org/2000/svg"><path fill-opacity="0.1" d="M0,160L60,170.7C120,181,240,203,360,186.7C480,171,600,117,720,112C840,107,960,149,1080,154.7C1200,160,1320,128,1380,112L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>') no-repeat bottom;
+  background-size: cover;
+  z-index: 1;
+}
+
+/* Hero section */
+.hero {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+    url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 4rem 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.hero h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  background-color: #00c853;
+  padding: 0.6rem 1.5rem;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #00b342;
+}
+
+/* Product section */
+.products {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: #f1f8f4;
+  position: relative;
+}
+
+.products h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #2e7d32;
+}
+
+/* Decorative shapes */
+.products::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: -60px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, #c8e6c9 20%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.products::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  right: -60px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #b2dfdb 20%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.product-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.product-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  width: 450px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.product-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  margin: 0.8rem 0 0.4rem;
+  font-size: 1.2rem;
+  color: #1b5e20;
+}
+
+.product-card p {
+  padding: 0 1rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.price {
+  font-weight: bold;
+  color: #2e7d32;
+  display: block;
+  margin: 0.8rem 0;
+  font-size: 1.05rem;
+}
+
+.product-card button {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+  background-color: #1b5e20;
+}
+
+/* Footer */
+footer {
+  background-color: #004d40;
+  color: white;
+  text-align: center;
+  padding: 1.5rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.social-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #aed581;
+}
+
+@media screen and (max-width: 768px) {
+  .product-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-card {
+    width: 90%;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Roots</h1>
+    <nav>
+      <a href="#">الرئيسية</a>
+      <a href="#">المنتجات</a>
+      <a href="#">تواصل</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>ماشي غير شبع، كول اللي يفيدك وينفع</h2>
+    <p>أجود الأطعمة الطبيعية الطازجة في متناول يدك</p>
+  </section>
+
+  <section class="products">
+    <h2>منتجاتنا المختارة</h2>
+    <div class="product-list">
+      <div class="product-card">
+        <img src="طريقة-عمل-سلطة-خضراء-بلدي-3558532296.jpg" alt="سلطة خضراء">
+        <h3>سلطة خضراء</h3>
+        <p>خليط من الخضروات الطازجة الغنية بالفيتامينات.</p>
+        <span class="price">25 درهم</span>
+        <button>أضف إلى السلة</button>
+      </div>
+      <div class="product-card">
+        <img src="19_2023-638090431890970098-97-4242485478.jpg" alt="شوربة عدس">
+        <h3>شوربة عدس</h3>
+        <p>وجبة غنية بالبروتين النباتي ومناسبة لكل الفصول.</p>
+        <span class="price">20 درهم</span>
+        <button>أضف إلى السلة</button>
+      </div>
+      <div class="product-card">
+        <img src="191031122651278~عصير-طبيعي-للرجيم-2089447505.jpg" alt="عصير طبيعي">
+        <h3>عصير طبيعي</h3>
+        <p>عصير فواكه طازجة بدون أي إضافات صناعية.</p>
+        <span class="price">15 درهم</span>
+        <button>أضف إلى السلة</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>تواصل معنا عبر:</p>
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+    <p style="margin-top: 1rem;">&copy; 2025 | <a href="mailto:healthy@food.com" style="color: #c8e6c9;">healthy@food.com</a></p>
+  </footer>
+
+</body>
+</html>
